@@ -23,7 +23,7 @@ public class VehiclePrinter {
         UserInput userInput = new UserInput();
         int id = Integer.parseInt(userInput.getValueFromUser("Type id of the vehicle(Starts from 0)"));
         try {
-            printInformation(vehicles.get(0));
+            printInformation(vehicles.get(id));
         } catch (NullPointerException nullPointerException) {
             System.out.println("Element with this id doesn't exist");
         }

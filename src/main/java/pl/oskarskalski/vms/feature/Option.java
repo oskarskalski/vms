@@ -9,9 +9,7 @@ public class Option {
             "Print vehicle",
             "Print vehicles",
             "Add vehicle",
-            "Update vehicle",
             "Delete vehicle",
-            "Sum mileages(It only works on vehicles that have field name mileage)"
     };
 
     public void printOptions() {

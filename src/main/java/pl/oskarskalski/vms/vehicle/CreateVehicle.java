@@ -49,6 +49,8 @@ public class CreateVehicle {
             if(value == null || value.equals("")){
                 data.append(0);
             }else{
+                if(value.contains(" "))
+                    value = value.replace(" ", "_");
                 data.append(value);
             }
         }
