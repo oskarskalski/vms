@@ -1,5 +1,6 @@
 package pl.oskarskalski.vms.feature;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Methods<VehicleObject> {
@@ -24,10 +25,9 @@ public class Methods<VehicleObject> {
         return result.toArray(new String[0]);
     }
 
-    public String[] getGetters(VehicleObject vehicleObject) {
+    public String[] getGetters(VehicleObject vehicleObject){
         List<String> result = new ArrayList<>();
         String[] methods = Arrays.toString(vehicleObject.getClass().getMethods()).split(",");
-
         for (String method : methods) {
             String[] splitMethodInformationByDot = method.split("\\.");
             String methodName = splitMethodInformationByDot[splitMethodInformationByDot.length - 1];

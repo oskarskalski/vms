@@ -58,6 +58,6 @@ public class CreateVehicle {
         VehicleConverter vehicleConverter = new VehicleConverter();
         List<String[]> dataList = new ArrayList<>();
         dataList.add(data.toString().split(" "));
-        return vehicleConverter.converterToObjects(dataList).get(0);
+        return vehicleConverter.convertToObjects(dataList).get(0);
     }
 }

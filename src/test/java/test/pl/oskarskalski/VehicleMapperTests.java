@@ -79,4 +79,18 @@ class VehicleMapperTests {
                 ()-> assertEquals(vehicle.getMileage(), 1.0),
                 () -> assertTrue(vehicle.isElectrical()));
     }
+
+
+    @Test
+    void givenIsStringWithVehicleInvalidData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        VehicleMapper<Vehicle> vehicleMapper = new VehicleMapper<>();
+        String[] data = vehicleTextData.substring(0, vehicleTextData.length() - 4).split(" ");
+        Vehicle vehicle = vehicleMapper.mapToObject(new Vehicle(), data);
+
+        assertAll(() -> assertEquals(vehicle.getBrandName(), "Kross"),
+                () -> assertEquals(vehicle.getNumberOfSeats(), 1),
+                () -> assertEquals(vehicle.getNumberOfTires(), 2),
+                () -> assertNull(vehicle.getVehicleType()),
+                () -> assertFalse(vehicle.isElectrical()));
+    }
 }

@@ -1,11 +1,9 @@
 package pl.oskarskalski.vms.vehicle;
 
 import pl.oskarskalski.vms.feature.Methods;
-import pl.oskarskalski.vms.feature.Sort;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
 
 public class VehicleMapper<VehicleObject> {
     private final Methods<VehicleObject> methods = new Methods<>();

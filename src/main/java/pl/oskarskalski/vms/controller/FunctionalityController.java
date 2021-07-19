@@ -28,7 +28,7 @@ public class FunctionalityController {
                 VehicleConverter vehicleConverter = new VehicleConverter();
                 try {
                     if (data != null) {
-                        vehicles = vehicleConverter.converterToObjects(data);
+                        vehicles = vehicleConverter.convertToObjects(data);
                     } else {
                         System.out.println("There's no data to create objects");
                     }
