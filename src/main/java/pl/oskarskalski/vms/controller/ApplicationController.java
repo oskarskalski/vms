@@ -6,10 +6,10 @@ import pl.oskarskalski.vms.feature.UserInput;
 
 public class ApplicationController {
     private final FunctionalityController functionalityController = new FunctionalityController();
+    private final Option option = new Option();
 
     public void controller() {
         while (true) {
-            Option option = new Option();
             option.printOptions();
 
             UserInput userInput = new UserInput();

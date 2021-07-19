@@ -2,9 +2,6 @@ package pl.oskarskalski.vms.vehicle;
 
 import pl.oskarskalski.vms.feature.Methods;
 import pl.oskarskalski.vms.feature.UserInput;
-import pl.oskarskalski.vms.model.Bike;
-import pl.oskarskalski.vms.model.Car;
-import pl.oskarskalski.vms.model.Motorcycle;
 import pl.oskarskalski.vms.model.Vehicle;
 
 import java.lang.reflect.InvocationTargetException;
@@ -42,31 +39,14 @@ public class VehiclePrinter {
             String[] splitNames = vehicle.getClass().getName().split("\\.");
             String className = splitNames[splitNames.length - 1];
 
-            Methods methods = null;
-            String[] getters = null;
+            Methods methods = new Methods();
+            VehicleMethods vehicleXYZ = new VehicleMethods(className);
+            String[] getters = vehicleXYZ.getGettersNames();
 
-            switch (className) {
-                case "Vehicle":
-                    methods = new Methods<Vehicle>();
-                    getters = methods.getGetters(new Vehicle());
-                    break;
-                case "Bike":
-                    methods = new Methods<Bike>();
-                    getters = methods.getGetters(new Bike());
-                    break;
-                case "Motorcycle":
-                    methods = new Methods<Motorcycle>();
-                    getters = methods.getGetters(new Motorcycle());
-                    break;
-                case "Car":
-                    methods = new Methods<Car>();
-                    getters = methods.getGetters(new Car());
-                    break;
-            }
             System.out.println(className + ": ");
             for (String method : getters) {
+                String methodName = methods.getMethodName(method);
                 try {
-                    String methodName = methods.getMethodName(method);
                     Method getMethod = vehicle.getClass().getMethod(methodName);
                     System.out.println("\t" + methodName + " = " + getMethod.invoke(vehicle));
                 } catch (IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {

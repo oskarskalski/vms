@@ -3,7 +3,7 @@ package pl.oskarskalski.vms.controller;
 import pl.oskarskalski.vms.feature.FileOperations;
 import pl.oskarskalski.vms.feature.UserInput;
 import pl.oskarskalski.vms.model.*;
-import pl.oskarskalski.vms.vehicle.CreateVehicle;
+import pl.oskarskalski.vms.vehicle.VehicleCreator;
 import pl.oskarskalski.vms.vehicle.VehicleConverter;
 import pl.oskarskalski.vms.vehicle.VehiclePrinter;
 
@@ -25,10 +25,14 @@ public class FunctionalityController {
                 } catch (IOException e) {
                     System.out.println("Something went wrong!");
                 }
+
                 VehicleConverter vehicleConverter = new VehicleConverter();
                 try {
                     if (data != null) {
-                        vehicles = vehicleConverter.convertToObjects(data);
+                        if(vehicles == null)
+                            vehicles = vehicleConverter.convertToObjects(data);
+                        else
+                            vehicles.addAll(vehicleConverter.convertToObjects(data));
                     } else {
                         System.out.println("There's no data to create objects");
                     }
@@ -48,7 +52,7 @@ public class FunctionalityController {
                 vehiclePrinter.printAll();
                 break;
             case 5:
-                CreateVehicle createVehicle = new CreateVehicle();
+                VehicleCreator createVehicle = new VehicleCreator();
                 try {
                     Vehicle vehicle = createVehicle.create();
                     if(vehicles == null){
