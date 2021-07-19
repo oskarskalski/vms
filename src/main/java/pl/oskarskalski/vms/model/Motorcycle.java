@@ -49,28 +49,4 @@ public class Motorcycle extends Bike{
     public void setMileage(double mileage) {
         this.mileage = mileage;
     }
-
-    @Override
-    public String printInformation() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.printInformation());
-
-        sb.append("\tTransmission type = ");
-        sb.append(transmissionsType);
-        sb.append("\n");
-
-        sb.append("\tEngine type = ");
-        sb.append(transmissionsType);
-        sb.append("\n");
-
-        sb.append("\tHorse power= ");
-        sb.append(horsePower);
-        sb.append("\n");
-
-        sb.append("\tMileage = ");
-        sb.append(mileage);
-        sb.append("\n");
-
-        return sb.toString();
-    }
 }

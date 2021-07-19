@@ -57,31 +57,4 @@ public class Vehicle{
     public void setElectrical(boolean electrical) {
         this.electrical = electrical;
     }
-
-    public String printInformation(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("VehiclePrinter information:\n");
-
-        sb.append("\tVehicle type = ");
-        sb.append(vehicleType);
-        sb.append("\n");
-
-        sb.append("\tBrand name = ");
-        sb.append(brandName);
-        sb.append("\n");
-
-        sb.append("\tNumber of tires = ");
-        sb.append(numberOfTires);
-        sb.append("\n");
-
-        sb.append("\tNumber of Seats = ");
-        sb.append(numberOfSeats);
-        sb.append("\n");
-
-        sb.append("\tIs electrical = ");
-        sb.append(electrical);
-        sb.append("\n");
-
-        return sb.toString();
-    }
 }

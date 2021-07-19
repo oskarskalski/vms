@@ -18,16 +18,4 @@ public class Bike extends Vehicle {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    @Override
-    public String printInformation() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(super.printInformation());
-
-        sb.append("\tPrice = ");
-        sb.append(price);
-        sb.append("\n");
-
-        return sb.toString();
-    }
 }
