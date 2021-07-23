@@ -9,6 +9,8 @@ import pl.oskarskalski.vms.model.Vehicle;
 import java.lang.reflect.InvocationTargetException;
 
 public class VehicleMethods {
+    private final static String modalPackageName = Vehicle.class.getName().replace("Vehicle", "");
+
     private Methods vehicleMethods;
     private String className;
     public VehicleMethods(String className){
@@ -33,8 +35,9 @@ public class VehicleMethods {
 
     public Object getObject(){
         Object vehicleClass = null;
+
         try {
-            vehicleClass = Class.forName("pl.oskarskalski.vms.model." + className).getConstructor().newInstance();
+            vehicleClass = Class.forName(modalPackageName + className).getConstructor().newInstance();
         } catch (InstantiationException | ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }

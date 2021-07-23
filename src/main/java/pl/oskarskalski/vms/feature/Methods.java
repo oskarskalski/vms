@@ -1,6 +1,5 @@
 package pl.oskarskalski.vms.feature;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Methods<VehicleObject> {
@@ -32,7 +31,6 @@ public class Methods<VehicleObject> {
             String[] splitMethodInformationByDot = method.split("\\.");
             String methodName = splitMethodInformationByDot[splitMethodInformationByDot.length - 1];
             if(methodName.contains("java.lang.String")){
-                System.out.println("found!!");
                 methodName = methodName.replace("java.lang.String", "");
             }
 
