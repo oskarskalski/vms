@@ -11,6 +11,9 @@ public class VehicleMapper<VehicleObject> {
     public VehicleObject mapToObject(VehicleObject vehicleObject, String[] data) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String[] setters = methods.getSetters(vehicleObject);
 
+        if(data.length == 1)
+            return vehicleObject;
+
         for (int i = 1; i < data.length; i++) {
             String method = setters[i - 1];
 
@@ -52,14 +55,13 @@ public class VehicleMapper<VehicleObject> {
 
         StringBuilder sb = new StringBuilder();
         sb.append(objectName[objectName.length - 1]);
-        for(String methodName: getters){
+        for (String methodName : getters) {
             sb.append(" ");
             Method getMethod = vehicleObject.getClass().getMethod(methods.getMethodName(methodName));
             sb.append(getMethod.invoke(vehicleObject));
         }
         return sb.toString();
     }
-
 
 
 }

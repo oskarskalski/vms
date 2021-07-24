@@ -45,7 +45,7 @@ class TestData {
     static final double CAR_PRICE = 300_000.0;
     static final String CAR_TRANSMISSION_TYPE = "automatic";
     static final String CAR_TYPE = "suv";
-    static final boolean CAR_HAS_TOW_BAR = false;
+    static final boolean CAR_HAS_TOW_BAR = true;
     static final boolean CAR_HAS_ROOF_BIKE_RACK = false;
 
     static final String VEHICLE_TEXT_DATA = VEHICLE_PREFIX + VEHICLE_BRAND_NAME + " " + VEHICLE_IS_ELECTRICAL + " " +
@@ -54,14 +54,13 @@ class TestData {
     static final String BIKE_TEXT_DATA = BIKE_PREFIX + BIKE_BRAND_NAME + " " + BIKE_IS_ELECTRICAL + " " +
             BIKE_NUMBER_OF_SEATS + " " + BIKE_NUMBER_OF_TIRES + " " + BIKE_PRICE + " " + BIKE_TYPE;
 
-
     static final String MOTORCYCLE_TEXT_DATA = MOTORCYCLE_PREFIX + MOTORCYCLE_BRAND_NAME + " " + MOTORCYCLE_IS_ELECTRICAL +
             " " + MOTORCYCLE_ENGINE_TYPE + " " + +MOTORCYCLE_HORSE_POWER + " " + MOTORCYCLE_MILEAGE + " " + MOTORCYCLE_NUMBER_OF_SEATS + " " +
             MOTORCYCLE_NUMBER_OF_TIRES + " " + MOTORCYCLE_PRICE + " " + MOTORCYCLE_TRANSMISSION_TYPE + " " + MOTORCYCLE_TYPE;
 
     static final String CAR_TEXT_DATA = CAR_PREFIX + CAR_BRAND_NAME + " " + CAR_IS_ELECTRICAL + " " + CAR_ENGINE_TYPE + " " +
             CAR_HORSE_POWER + " " + CAR_MILEAGE + " " + CAR_NUMBER_OF_SEATS + " " + CAR_NUMBER_OF_TIRES + " " +
-            CAR_PRICE + " " + CAR_HAS_TOW_BAR + " " + CAR_HAS_ROOF_BIKE_RACK + " " + CAR_TRANSMISSION_TYPE + " " + CAR_TYPE;
+            CAR_PRICE + " " + CAR_HAS_ROOF_BIKE_RACK + " " + CAR_HAS_TOW_BAR + " " + CAR_TRANSMISSION_TYPE + " " + CAR_TYPE;
 
 
     static final Car CAR_OBJECT_TEST_WITH_NULL_FIELDS = new Car();
@@ -70,16 +69,18 @@ class TestData {
     static final Vehicle VEHICLE_OBJECT_TEST_WITH_NULL_FIELDS = new Vehicle();
 
     static final Car CAR_OBJECT_TEST_WITH_VALID_FIELDS =
-            new Car("Suv", "Tesla", 4,
-                    5, true, 400000.0, "automatic", null, 400,
-                    1.0, false, false);
+            new Car(CAR_TYPE, CAR_BRAND_NAME, CAR_NUMBER_OF_TIRES,
+                    CAR_NUMBER_OF_SEATS, CAR_IS_ELECTRICAL, CAR_PRICE, CAR_TRANSMISSION_TYPE, CAR_ENGINE_TYPE, CAR_HORSE_POWER,
+                    CAR_MILEAGE, CAR_HAS_TOW_BAR, CAR_HAS_ROOF_BIKE_RACK);
 
     static final Motorcycle MOTORCYCLE_OBJECT_TEST_WITH_VALID_FIELDS =
-            new Motorcycle("Street", "Yamaha", 4, 2, false, 4000,
-                    "manual", "inline_4", 150, 1.0);
+            new Motorcycle(MOTORCYCLE_TYPE, MOTORCYCLE_BRAND_NAME, MOTORCYCLE_NUMBER_OF_TIRES, MOTORCYCLE_NUMBER_OF_SEATS, MOTORCYCLE_IS_ELECTRICAL, MOTORCYCLE_PRICE,
+                    MOTORCYCLE_TRANSMISSION_TYPE, MOTORCYCLE_ENGINE_TYPE, MOTORCYCLE_HORSE_POWER, MOTORCYCLE_MILEAGE);
 
     static final Bike BIKE_OBJECT_TEST_WITH_VALID_FIELDS =
-            new Bike();
-    static final Vehicle VEHICLE_OBJECT_TEST_WITH_VALID_FIELDS = new Vehicle();
+            new Bike(BIKE_TYPE, BIKE_BRAND_NAME, BIKE_NUMBER_OF_TIRES, BIKE_NUMBER_OF_SEATS, BIKE_IS_ELECTRICAL, BIKE_PRICE);
+
+    static final Vehicle VEHICLE_OBJECT_TEST_WITH_VALID_FIELDS =
+            new Vehicle(VEHICLE_TYPE, VEHICLE_BRAND_NAME, VEHICLE_NUMBER_OF_TIRES, VEHICLE_NUMBER_OF_SEATS, VEHICLE_IS_ELECTRICAL);
 
 }

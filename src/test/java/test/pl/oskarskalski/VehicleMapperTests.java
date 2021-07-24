@@ -69,7 +69,7 @@ class VehicleMapperTests {
                 () -> assertEquals(CAR_NUMBER_OF_SEATS, vehicle.getNumberOfSeats()),
                 () -> assertEquals(CAR_NUMBER_OF_TIRES, vehicle.getNumberOfTires()),
                 () -> assertEquals(CAR_TYPE, vehicle.getVehicleType()),
-                () -> assertEquals(CAR_PRICE, vehicle.getPrice(), 300000.0),
+                () -> assertEquals(CAR_PRICE, vehicle.getPrice()),
                 () -> assertEquals(CAR_TRANSMISSION_TYPE, vehicle.getTransmissionsType()),
                 () -> assertEquals(CAR_ENGINE_TYPE, vehicle.getEngineType()),
                 () -> assertEquals(CAR_HAS_ROOF_BIKE_RACK, vehicle.hasRoofBikeRack()),
@@ -78,7 +78,6 @@ class VehicleMapperTests {
                 () -> assertEquals(CAR_MILEAGE, vehicle.getMileage()),
                 () -> assertEquals(CAR_IS_ELECTRICAL, vehicle.isElectrical()));
     }
-
 
     @Test
     void givenIsStringWithVehicleInvalidData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
@@ -91,5 +90,26 @@ class VehicleMapperTests {
                 () -> assertEquals(VEHICLE_NUMBER_OF_TIRES, vehicle.getNumberOfTires()),
                 () -> assertEquals(VEHICLE_IS_ELECTRICAL, vehicle.isElectrical()),
                 () -> assertNull(vehicle.getVehicleType()));
+    }
+
+    @Test
+    void givenIsStringWithoutData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        VehicleMapper<Vehicle> vehicleMapper = new VehicleMapper<>();
+        String data[] = {VEHICLE_PREFIX};
+        Vehicle vehicle = vehicleMapper.mapToObject(new Vehicle(), data);
+
+        assertAll(() -> assertNull(vehicle.getBrandName()),
+                () -> assertNull(vehicle.getVehicleType()),
+                () -> assertEquals(0, vehicle.getNumberOfSeats()),
+                () -> assertEquals(0, vehicle.getNumberOfTires()),
+                () -> assertFalse(vehicle.isElectrical()));
+    }
+
+    @Test
+    void givenIsObject__ExceptedMappedString__ReturnedMappedString() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        VehicleMapper<Vehicle> vehicleMapper = new VehicleMapper<>();
+        String vehicleString = vehicleMapper.mapToString(CAR_OBJECT_TEST_WITH_VALID_FIELDS);
+
+        assertEquals(CAR_TEXT_DATA, vehicleString);
     }
 }
