@@ -12,13 +12,12 @@ import pl.oskarskalski.vms.model.Vehicle;
 import pl.oskarskalski.vms.vehicle.VehicleMapper;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 class VehicleMapperTests {
     @Test
     void givenIsStringWithVehicleData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         VehicleMapper<Vehicle> vehicleMapper = new VehicleMapper<>();
-        String[] data = vehicleTextData.split(" ");
+        String[] data = VEHICLE_TEXT_DATA.split(" ");
         Vehicle vehicle = vehicleMapper.mapToObject(new Vehicle(), data);
 
         assertAll(() -> assertEquals(vehicle.getBrandName(), "Kross"),
@@ -31,7 +30,7 @@ class VehicleMapperTests {
     @Test
     void givenIsStringWithBikeData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         VehicleMapper<Bike> vehicleMapper = new VehicleMapper<>();
-        String[] data = bikeTextData.split(" ");
+        String[] data = BIKE_TEXT_DATA.split(" ");
         Bike vehicle = vehicleMapper.mapToObject(new Bike(), data);
 
         assertAll(() -> assertEquals(vehicle.getBrandName(), "Trek"),
@@ -39,13 +38,13 @@ class VehicleMapperTests {
                 () -> assertEquals(vehicle.getNumberOfTires(), 2),
                 ()-> assertEquals(vehicle.getVehicleType(), "MTB"),
                 ()-> assertEquals(vehicle.getPrice(), 4000.0),
-                () -> assertFalse(vehicle.isElectrical()));
+                () -> assertTrue(vehicle.isElectrical()));
     }
 
     @Test
     void givenIsStringWithMotorcycleData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         VehicleMapper<Motorcycle> vehicleMapper = new VehicleMapper<>();
-        String[] data = motorcycleTextData.split(" ");
+        String[] data = MOTORCYCLE_TEXT_DATA.split(" ");
         Motorcycle vehicle = vehicleMapper.mapToObject(new Motorcycle(), data);
 
         assertAll(() -> assertEquals(vehicle.getBrandName(), "Yamaha"),
@@ -63,7 +62,7 @@ class VehicleMapperTests {
     @Test
     void givenIsStringWithCarData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         VehicleMapper<Car> vehicleMapper = new VehicleMapper<>();
-        String[] data = carTextData.split(" ");
+        String[] data = CAR_TEXT_DATA.split(" ");
         Car vehicle = vehicleMapper.mapToObject(new Car(), data);
 
         assertAll(() -> assertEquals(vehicle.getBrandName(), "Tesla"),
@@ -84,7 +83,7 @@ class VehicleMapperTests {
     @Test
     void givenIsStringWithVehicleInvalidData__ExceptedMappedObject__ReturnedMappedObject() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         VehicleMapper<Vehicle> vehicleMapper = new VehicleMapper<>();
-        String[] data = vehicleTextData.substring(0, vehicleTextData.length() - 4).split(" ");
+        String[] data = VEHICLE_TEXT_DATA.substring(0, VEHICLE_TEXT_DATA.length() - 4).split(" ");
         Vehicle vehicle = vehicleMapper.mapToObject(new Vehicle(), data);
 
         assertAll(() -> assertEquals(vehicle.getBrandName(), "Kross"),
