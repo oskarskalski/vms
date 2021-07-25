@@ -2,11 +2,11 @@ package pl.oskarskalski.vms.feature;
 
 import java.util.*;
 
-public class Methods<VehicleObject> {
-    public String[] getSetters(VehicleObject vehicleObject) {
+public class ObjectMethods<VehicleObject> {
+    public String[] getSetterMethods(VehicleObject vehicleObject) {
         String[] methods = Arrays.toString(vehicleObject.getClass().getMethods()).split(",");
 
-        List<String> result = new ArrayList<>();
+        List<String> setters = new ArrayList<>();
 
         for (String method : methods) {
             if (method.contains("set")) {
@@ -16,15 +16,16 @@ public class Methods<VehicleObject> {
                 List<String> splitMethodInformationByDot = Arrays.asList(method.split("\\."));
                 String methodName = splitMethodInformationByDot
                         .get(splitMethodInformationByDot.size() - 1);
-                result.add(methodName);
+                setters.add(methodName);
             }
         }
-        Collections.sort(result);
+        String[] result = setters.toArray(new String[0]);
+        Arrays.sort(result);
 
-        return result.toArray(new String[0]);
+        return result;
     }
 
-    public String[] getGetters(VehicleObject vehicleObject){
+    public String[] getGetterMethods(VehicleObject vehicleObject){
         List<String> result = new ArrayList<>();
         String[] methods = Arrays.toString(vehicleObject.getClass().getMethods()).split(",");
         for (String method : methods) {
@@ -53,7 +54,7 @@ public class Methods<VehicleObject> {
         return methodName;
     }
 
-    public String getMethodParam(String value) {
+    public String getMethodParamType(String value) {
         String param = value
                 .substring(value.indexOf("(") + 1, value.indexOf(")"));
         return param;

@@ -1,15 +1,15 @@
 package pl.oskarskalski.vms.vehicle;
 
-import pl.oskarskalski.vms.feature.Methods;
+import pl.oskarskalski.vms.feature.ObjectMethods;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class VehicleMapper<VehicleObject> {
-    private final Methods<VehicleObject> methods = new Methods<>();
+    private final ObjectMethods<VehicleObject> methods = new ObjectMethods<>();
 
     public VehicleObject mapToObject(VehicleObject vehicleObject, String[] data) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String[] setters = methods.getSetters(vehicleObject);
+        String[] setters = methods.getSetterMethods(vehicleObject);
 
         if(data.length == 1)
             return vehicleObject;
@@ -19,7 +19,7 @@ public class VehicleMapper<VehicleObject> {
 
             String methodName = methods.getMethodName(method);
 
-            String methodParam = methods.getMethodParam(method);
+            String methodParam = methods.getMethodParamType(method);
 
             if (methodParam.equals("int")) {
                 Method getMethod = vehicleObject.getClass().getMethod(methodName, int.class);
@@ -50,7 +50,7 @@ public class VehicleMapper<VehicleObject> {
     }
 
     public String mapToString(VehicleObject vehicleObject) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        String[] getters = methods.getGetters(vehicleObject);
+        String[] getters = methods.getGetterMethods(vehicleObject);
         String[] objectName = vehicleObject.getClass().getName().split("\\.");
 
         StringBuilder sb = new StringBuilder();

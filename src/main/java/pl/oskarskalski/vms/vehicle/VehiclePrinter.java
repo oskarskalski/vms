@@ -1,6 +1,6 @@
 package pl.oskarskalski.vms.vehicle;
 
-import pl.oskarskalski.vms.feature.Methods;
+import pl.oskarskalski.vms.feature.ObjectMethods;
 import pl.oskarskalski.vms.feature.UserInput;
 import pl.oskarskalski.vms.model.Vehicle;
 
@@ -39,7 +39,7 @@ public class VehiclePrinter {
             String[] splitNames = vehicle.getClass().getName().split("\\.");
             String className = splitNames[splitNames.length - 1];
 
-            Methods methods = new Methods();
+            ObjectMethods methods = new ObjectMethods();
             VehicleMethods vehicleXYZ = new VehicleMethods(className);
             String[] getters = vehicleXYZ.getGettersNames();
 

@@ -1,6 +1,6 @@
 package pl.oskarskalski.vms.vehicle;
 
-import pl.oskarskalski.vms.feature.Methods;
+import pl.oskarskalski.vms.feature.ObjectMethods;
 import pl.oskarskalski.vms.model.Bike;
 import pl.oskarskalski.vms.model.Car;
 import pl.oskarskalski.vms.model.Motorcycle;
@@ -11,22 +11,22 @@ import java.lang.reflect.InvocationTargetException;
 public class VehicleMethods {
     private final static String modalPackageName = Vehicle.class.getName().replace("Vehicle", "");
 
-    private Methods vehicleMethods;
+    private ObjectMethods vehicleMethods;
     private String className;
     public VehicleMethods(String className){
         this.className = className;
         switch (className) {
             case "Vehicle":
-                vehicleMethods = new Methods<Vehicle>();
+                vehicleMethods = new ObjectMethods<Vehicle>();
                 break;
             case "Bike":
-                vehicleMethods = new Methods<Bike>();
+                vehicleMethods = new ObjectMethods<Bike>();
                 break;
             case "Motorcycle":
-                vehicleMethods = new Methods<Motorcycle>();
+                vehicleMethods = new ObjectMethods<Motorcycle>();
                 break;
             case "Car":
-                vehicleMethods = new Methods<Car>();
+                vehicleMethods = new ObjectMethods<Car>();
                 break;
             default:
                 System.out.println("Wrong name of vehicle");
@@ -46,12 +46,12 @@ public class VehicleMethods {
     }
 
     public String[] getGettersNames(){
-        String[] getters = vehicleMethods.getGetters(getObject());
+        String[] getters = vehicleMethods.getGetterMethods(getObject());
 
         return getters;
     }
     public String[] getSettersNames(){
-        String[] setters = vehicleMethods.getSetters(getObject());
+        String[] setters = vehicleMethods.getSetterMethods(getObject());
 
         return setters;
     }

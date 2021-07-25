@@ -17,7 +17,7 @@ public class VehicleConverter {
             try {
                  vehicleClass = Class.forName(modalsPackageName + values[0]).getConstructor().newInstance();
             } catch (InstantiationException | ClassNotFoundException e) {
-                e.printStackTrace();
+                System.out.println("Something went wrong with converting data to object");
             }
             vehicleClass.getClass().getConstructor().getDeclaringClass();
             vehicles.add((Vehicle) vehicleMapper.mapToObject(vehicleClass, values));
