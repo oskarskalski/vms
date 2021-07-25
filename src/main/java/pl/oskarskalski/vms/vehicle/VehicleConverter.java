@@ -9,7 +9,7 @@ import java.util.List;
 public class VehicleConverter {
     public List<Vehicle> convertToObjects(List<String[]> data) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         List<Vehicle> vehicles = new ArrayList<>();
-        String modalsPackageName = Vehicle.class.getName().replace(".Vehicle", "");
+        String modalsPackageName = Vehicle.class.getName().replace("Vehicle", "");
         for (String[] values : data) {
             values[0] = values[0].replace("[", "");
             VehicleMapper vehicleMapper = getVehicleMapper(values[0]);
